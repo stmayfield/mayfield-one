@@ -8,11 +8,11 @@ const handle = nextApp.getRequestHandler();
 nextApp.prepare().then(() => {
   const app = express();
 
-  app.get("*", (req: any, res: any) => {
+  app.get("*", (req, res) => {
     return handle(req, res);
   });
 
-  app.listen(3001, (err: any) => {
+  app.listen(3001, (err) => {
     if (err) throw err;
     console.log("> Ready on http://localhost:3001");
   });
