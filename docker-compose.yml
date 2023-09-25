@@ -9,9 +9,17 @@ services:
       - /usr/src/app/node_modules
     depends_on:
       - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: bravo29
+      DB_DATABASE: maydb1
   db:
     image: postgres
     ports:
       - "5432:5432"
     environment:
+      POSTGRES_DB: maydb1
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: bravo29
