@@ -2,9 +2,7 @@ const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize(
   "postgres://postgres:bravo29@db:5432/postgres",
-  {
-    logging: console.log, // Default, displays the first parameter of the log function call
-  }
+  { logging: console.log } // Default, displays the first parameter of the log function call
 );
 
 // Test the connection
