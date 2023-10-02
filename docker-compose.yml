@@ -13,7 +13,9 @@ services:
     image: postgres
     ports:
       - "5432:5432"
-    # volumes:
-    #   postgres_data:
     environment:
       POSTGRES_PASSWORD: bravo29
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:

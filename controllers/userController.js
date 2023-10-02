@@ -6,7 +6,7 @@ const createUser = async (req, res) => {
     const user = await User.create(req.body);
     res.status(201).json(user); // 201 Created
   } catch (err) {
-    res.status(400).json({ error: "Error creating user" }); // 400 Bad Request
+    res.status(400).json({ error: "Error creating user" + err }); // 400 Bad Request
   }
 };
 
