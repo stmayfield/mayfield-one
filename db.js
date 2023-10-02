@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize(
-  "postgres://postgres:bravo29@db:5432/postgres",
+  process.env.NEXT_PUBLIC_DB_URL,
   { logging: console.log } // Default, displays the first parameter of the log function call
 );
 

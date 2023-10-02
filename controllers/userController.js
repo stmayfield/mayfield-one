@@ -6,12 +6,12 @@ const createUser = async (req, res) => {
     const user = await User.create(req.body);
     res.status(201).json(user); // 201 Created
   } catch (err) {
-    res.status(400).json({ error: "Error creating user" }); // 400 Bad Request
+    res.status(400).json({ error: "Error creating user" + err }); // 400 Bad Request
   }
 };
 
 const getUserById = async (req, res) => {
-  console.log("Calling getUserById: ");
+  console.log("Calling getUserById: " + req.body);
   try {
     const user = await User.findByPk(req.params.id);
     if (user) {
@@ -20,24 +20,21 @@ const getUserById = async (req, res) => {
       res.status(404).json({ error: "User not found" }); // 404 Not Found
     }
   } catch (err) {
-    res.status(404).json({ error: "Failed to find user" }); // 404 Not Found
+    res.status(404).json({ error: "Failed to find user: " + err }); // 404 Not Found
   }
 };
 
 const getAllUsers = async (req, res) => {
-  console.log("Calling getAllUsers: ");
+  console.log("Calling getAllUsers: " + req.body);
   try {
     res.status(200).json(await User.findAll());
-    console.log("req", req);
   } catch (err) {
-    res.status(404).json({ error: "Failed to find users" });
+    res.status(404).json({ error: "Failed to find users: " + err });
   }
 };
 
 const updateUserById = async (req, res) => {
   console.log("Calling updateUserById: ");
-  console.log("req", req);
-  console.log("res", res);
   try {
     const updated = await User.update(req.body, {
       where: { id: req.params.id },
@@ -46,7 +43,7 @@ const updateUserById = async (req, res) => {
     });
     res.status(200).json(updated[1]); // 200 OK
   } catch (err) {
-    res.status(400).json({ error: "Failed to update user" }); // 400 Bad Request
+    res.status(400).json({ error: "Failed to update user: " + err }); // 400 Bad Request
   }
 };
 
