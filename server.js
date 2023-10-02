@@ -1,5 +1,6 @@
 const express = require("express");
 const next = require("next");
+const cors = require("cors");
 
 const dev = process.env.NODE_ENV !== "production";
 const nextApp = next({ dev });
@@ -14,6 +15,8 @@ nextApp.prepare().then(() => {
   const app = express();
 
   app.use(express.json());
+  // app.use(cors()); // enable CORS for all routes
+
   app.use(currentApiPath + "/users", userRoutes);
 
   app.get("*", (req, res) => {

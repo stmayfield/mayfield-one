@@ -10,4 +10,8 @@ COPY . .
 
 EXPOSE 3001
 
-CMD ["node", "server.js"]
+COPY entrypoint.sh /usr/src/app/entrypoint.sh
+
+RUN chmod +x /usr/src/app/entrypoint.sh
+
+CMD ["/usr/src/app/entrypoint.sh"]
