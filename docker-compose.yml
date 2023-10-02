@@ -14,7 +14,7 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: bravo29
+      POSTGRES_PASSWORD: NEXT_PUBLIC_DB_PASSWORD
     volumes:
       - postgres_data:/var/lib/postgresql/data
 volumes:
